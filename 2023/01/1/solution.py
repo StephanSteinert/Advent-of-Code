@@ -3,8 +3,8 @@ import re
 
 x   = 1
 sum = 0
-#file_name = "..\example.txt"
-file_name = "..\input.txt"
+#file_name = "example.txt"
+file_name = "../input.txt"
 
 # Open the file
 file = open(file_name, "r")
