@@ -9,7 +9,7 @@ file_name = "../input.txt"
 # Open the file
 file = open(file_name, "r")
 
-# Iterate over each left
+# Iterate over each line
 for line in file:  
     # Replace number words with real numbers
     # one|two|three|four|five|six|seven|eight|nine
