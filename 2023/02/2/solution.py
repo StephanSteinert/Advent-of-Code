@@ -19,11 +19,10 @@ finalResult = 0
 ###########################################################################
 ### Special code for each challenge
 # Challenge:
-# Return game id if game has less or equal than 12 red cubes and
-# less or equal than 13 green cubes and less or equal than 14 blue cubes
-# in each pass
-# Expected test result: 8
-testResult = 8
+# For each game, find the minimum set of cubes that must have been present.
+# The power of a set of cubes is equal to the numbers of red, green, and blue cubes multiplied together.
+# Expected test result: 2286
+testResult = 2286
 
 def thisIsWhereTheMagicHappens(line):
     # define vars
@@ -42,37 +41,35 @@ def thisIsWhereTheMagicHappens(line):
     id = _a[0]
     id = id.replace("Game ", "")
 
-    # Extract individual games
+    # Extract individual rounds
     rounds = _a[1].split("; ")
-    maxRounds = len(rounds)
 
-    # Iterate over each pass and extract cubes
-    valid = True
+    # Iterate over each round and extract cubes
     for round in rounds:
-        # Separate cubes in each game
+        # Separate cubes in each round
         cubes = round.split(", ")
 
         # Iterate over cubes to extract color and amount
-        # and add them to the sum
+        # and largest amount per color
         for color in cubes:
             if color.find(" red") != -1:
-                red = int(color.replace(" red", ""))
+                _red = int(color.replace(" red", ""))
+                if _red > red: red = _red
             if color.find(" green") != -1:
-                green = int(color.replace(" green", ""))
+                _green = int(color.replace(" green", ""))
+                if _green > green: green = _green
             if color.find(" blue") != -1:
-                blue = int(color.replace(" blue", ""))
-
-        # Set round as invalid if to many cubes
-        if red > 12 or green > 13 or blue > 14: valid = False
+                _blue = int(color.replace(" blue", ""))
+                if _blue > blue: blue = _blue
       
     # Publish game id if result is valid
-    if valid == True: result = int(id)
+    result = red * green * blue
 
     if not FINISHED:
         print("\n###")
         print("Input: " + line)
         print("Game id: " + id)
-        print("Valid") if result > 0 else print("Not Valid")
+        print("Power: " + str(result))
 
     return result
 ###########################################################################
