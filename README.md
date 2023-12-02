@@ -3,4 +3,4 @@ My participation in [Advent of Code ](https://adventofcode.com/)
 
 | year | language | progress |
 |:----:|:--------:| -------- |
-| 2023 | Python   | **       |
+| 2023 | Python   | ****     |
